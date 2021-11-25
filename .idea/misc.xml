@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/drawable/ic_profile.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_all.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_baked.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_basket.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_fruits.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_greens.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_like.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_login.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_search.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/layout/fragment_vegetables.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/FinalYearProject/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.2203125" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/drawable/ic_email.xml" value="0.2203125" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/drawable/ic_person.xml" value="0.2203125" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/drawable/round_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/drawable/round_border.xml" value="0.2203125" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/drawable/wave.xml" value="0.2203125" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/activity_main.xml" value="0.15806159420289856" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_all.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_greens.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="SuppressABINotification">
+    <option name="modulesWithSuppressedNotConfigured">
+      <set>
+        <option value="FinalYearProject.app" />
+      </set>
+    </option>
+  </component>
+</project>
