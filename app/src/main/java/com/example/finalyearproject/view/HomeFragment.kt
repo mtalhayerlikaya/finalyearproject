@@ -43,11 +43,6 @@ class HomeFragment : Fragment() {
         tab_layout.setupWithViewPager(view_pager)
 
 
-
-
-
-
-
     }
 
 

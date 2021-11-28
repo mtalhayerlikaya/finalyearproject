@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -50,6 +53,24 @@
         <action
             android:id="@+id/action_signUpFragment_to_homeFragment2"
             app:destination="@id/homeFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.finalyearproject.view.ChangePasswordContinuePageFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password_continue_page" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_changePasswordFragment2"
+            app:destination="@id/changePasswordFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment2"
+        android:name="com.example.finalyearproject.view.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment2_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 
 </navigation>

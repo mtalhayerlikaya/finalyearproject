@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.finalyearproject.model.SignIn
-import com.example.finalyearproject.model.SignUp
-import com.example.finalyearproject.model.UserSignIn
-import com.example.finalyearproject.model.UserSignUp
+import com.example.finalyearproject.model.ResponseSignIn
+import com.example.finalyearproject.model.ResponseSignUp
+import com.example.finalyearproject.model.RequestSignIn
+import com.example.finalyearproject.model.RequestSignUp
 import com.example.finalyearproject.repository.LoginPageRepository
 
 import com.example.finalyearproject.util.Resource
@@ -22,24 +22,24 @@ class LoginViewModel @Inject constructor(
 
 
 
-    private val sgnInResponse = MutableLiveData<Resource<SignIn>>()
-    val signInResponse : LiveData<Resource<SignIn>>
+    private val sgnInResponse = MutableLiveData<ResponseSignIn>()
+    val responseSignInResponse : LiveData<ResponseSignIn>
         get() = sgnInResponse
 
-    private val sgnUpResponse = MutableLiveData<Resource<SignUp>>()
-    val signUpResponse : LiveData<Resource<SignUp>>
-        get() = sgnUpResponse
 
-
-
-
-    fun signInRequest(userSignIn: UserSignIn) = viewModelScope.launch {
-        sgnInResponse.value = repo.signInRequest(userSignIn)
+    fun signInRequest(requestSignIn: RequestSignIn) = viewModelScope.launch {
+        sgnInResponse.value = repo.signInRequest(requestSignIn)
     }
 
-    fun signUpRequest(userSignUp: UserSignUp) = viewModelScope.launch {
-        sgnUpResponse.value = repo.signUpRequest(userSignUp)
+    fun deneme(){
+
+        println("deneme")
+
+        //sgnInResponse.postValue(repo.signInRequest(requestSignIn))
+
     }
+
+
 
 
 }

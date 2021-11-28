@@ -1,23 +1,28 @@
 package com.example.finalyearproject.Api
 
-import com.example.finalyearproject.model.SignIn
-import com.example.finalyearproject.model.SignUp
-import com.example.finalyearproject.model.UserSignIn
-import com.example.finalyearproject.model.UserSignUp
+import com.example.finalyearproject.model.*
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface RetrofitApi {
 
     @Headers("Content-Type: application/json")
-    @POST("user/signin")
-    suspend fun sendSignInRequest(@Body user: UserSignIn): Response<SignIn>
+    @POST("api/session/signin")
+    suspend fun sendSignInRequest(@Body request: RequestSignIn): Response<ResponseSignIn>
 
     @Headers("Content-Type: application/json")
-    @POST("user/signup")
-    suspend fun sendSignUpRequest(@Body user: UserSignUp):Response<SignUp>
+    @POST("api/session")
+    suspend fun sendSignUpRequest(@Body request: RequestSignUp):Response<ResponseSignUp>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/session/changepasswordrequest")
+    suspend fun sendEmailToReset(@Body request: EmailRequest):Response<EmailResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/session/changepassword/{token}")
+    suspend fun sendResetRequest(@Body request: RequestChangePassword,
+        @Path(value = "token")  token:String
+    ):Response<ResponseChangePassword>
 
 
 

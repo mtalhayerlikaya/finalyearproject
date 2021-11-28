@@ -10,26 +10,19 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 
-import com.example.finalyearproject.Api.RetrofitApi
 import com.example.finalyearproject.R
-import com.example.finalyearproject.model.UserSignIn
+import com.example.finalyearproject.model.RequestSignIn
 import com.example.finalyearproject.viewmodel.LoginViewModel
 
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.coroutines.*
-import javax.inject.Inject
 
 
 class LoginFragment : Fragment() {
 
+    val scope = CoroutineScope(Dispatchers.IO+ Job())
 
-      private lateinit var viewModel: LoginViewModel
-
-
-      @Inject
-      lateinit var api:RetrofitApi
-
-      val scope = CoroutineScope(Job() + Dispatchers.IO)
+    private lateinit var viewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,41 +47,42 @@ class LoginFragment : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity()).get(LoginViewModel::class.java)
 
-        //val userToSignIn = UserSignIn("jeffbezos@gmail.com","deneme123123")
-
-        //println("onviewcreated")
-
         RegisterText.setOnClickListener {
             val action =
                 Navigation.findNavController(it)
                     .navigate(R.id.action_loginFragment_to_signUpFragment)
         }
 
-        signInButton.setOnClickListener {
-           // var user = UserSignIn(userEmail, userPassword)
-           // viewModel.signInRequest(user)
+        forgotPassword.setOnClickListener {
+            val action =
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_loginFragment_to_changePasswordFragment)
+        }
 
-            var user = UserSignIn(signInEmail.text.toString(),signInPassword.text.toString())
+
+        loginPageButton.setOnClickListener {
+            val user = RequestSignIn(loginEmailText.text.trim().toString(),loginPagePassword.text.trim().toString())
+            println(user)
             viewModel.signInRequest(user)
 
-           // println(signInName.text)
-           // println(signInPassword.text)
+            viewModel.deneme()
 
         }
 
         observerFunctions()
-
     }
 
-    fun observerFunctions(){
+    private fun observerFunctions(){
 
-        viewModel.signInResponse.observe(viewLifecycleOwner, Observer {
-            when (it.data?.status) {
+        viewModel.responseSignInResponse.observe(viewLifecycleOwner, Observer {
+            println("insde obeserver")
+            println(it?.message)
+            when (it.status) {
                 "SUCCESS" -> {
 
-                   // view?.let { it1 -> Snackbar.make(it1,it.message.toString(),Snackbar.LENGTH_LONG).show() }
-                    Toast.makeText(requireContext(), it.data.message ?: "Error", Toast.LENGTH_SHORT).show()
-                    println("asdasd")
+                    // view?.let { it1 -> Snackbar.make(it1,it.message.toString(),Snackbar.LENGTH_LONG).show() }
+                    Toast.makeText(requireContext(),"Welcome!", Toast.LENGTH_SHORT).show()
+                    println("success")
                     println(it)
                     val action = view?.let { it1 ->
                         Navigation.findNavController(it1)
@@ -98,30 +92,22 @@ class LoginFragment : Fragment() {
                 }
 
                 "FAILED" -> {
-                    println(it)
-                   // view?.let { it1 -> Snackbar.make(it1,it.message.toString(),Snackbar.LENGTH_LONG).show() }
-                     Toast.makeText(requireContext(), it.data.message ?: "Error", Toast.LENGTH_LONG).show()
+                    println(it.data)
+                    println("failed")
+                    // view?.let { it1 -> Snackbar.make(it1,it.message.toString(),Snackbar.LENGTH_LONG).show() }
+                    Toast.makeText(requireContext(),it.message,Toast.LENGTH_LONG).show()
 
 
-                /*
-                Status.LOADING -> {
-                    fragmentBinding?.progressBar?.visibility = View.VISIBLE
+                    /*
+                    Status.LOADING -> {
+                        fragmentBinding?.progressBar?.visibility = View.VISIBLE
 
-                }*/
+                    }*/
                 }
             }
         }
         )
     }
-
-
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        scope.cancel()
-    }
-
 
 
 }

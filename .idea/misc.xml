@@ -25,9 +25,11 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/drawable/wave.xml" value="0.2203125" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/activity_main.xml" value="0.15806159420289856" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_all.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_change_password.xml" value="0.25" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_change_password_continue_page.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_greens.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
       </map>
     </option>

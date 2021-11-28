@@ -1,18 +1,12 @@
 package com.example.finalyearproject.repository
 
 import com.example.finalyearproject.Api.RetrofitApi
-import com.example.finalyearproject.model.SignIn
-import com.example.finalyearproject.model.SignUp
-import com.example.finalyearproject.model.UserSignIn
-import com.example.finalyearproject.model.UserSignUp
+import com.example.finalyearproject.model.ResponseSignIn
+import com.example.finalyearproject.model.ResponseSignUp
+import com.example.finalyearproject.model.RequestSignIn
+import com.example.finalyearproject.model.RequestSignUp
 import com.example.finalyearproject.util.Resource
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import retrofit2.Response
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
 class LoginPageRepository @Inject constructor(
     private val api :RetrofitApi
@@ -21,41 +15,32 @@ class LoginPageRepository @Inject constructor(
         println("bu bir denemedir")
     }
 
-    suspend fun signInRequest(userSignIn: UserSignIn) : Resource<SignIn> {
+    suspend fun signInRequest(requestSignIn: RequestSignIn) : ResponseSignIn {
 
         return try {
-            val response = api.sendSignInRequest(userSignIn)
+            val response = api.sendSignInRequest(requestSignIn)
+            println("insude sending")
+            println(requestSignIn)
+            println(response)
+            println(response.body())
             if(response.isSuccessful){
+                println(response)
+                println(response.body())
                 response.body()?.let {
-                    return@let Resource.success(it)
-                } ?: return Resource.error(response.message(),null)
+                    return@let it
+                } ?: return ResponseSignIn("FAILED",null,null,"response is null")
             }else{
-                return Resource.error("request is not succesfull",null)
+                return ResponseSignIn("FAILED",null,null,"response is not succesfull")
             }
 
         }catch (e:Exception){
-            Resource.error(e.printStackTrace().toString(),null)
+            ResponseSignIn("FAILED",null,null,"response is not succesfull")
+
         }
 
     }
 
-     suspend fun signUpRequest(userSignUp: UserSignUp) :Resource<SignUp>{
 
-         return try {
-             val response = api.sendSignUpRequest(userSignUp)
-             if(response.isSuccessful){
-                 response.body()?.let {
-                     return@let Resource.success(it)
-                 } ?: return Resource.error(response.message(),null)
-             }else{
-                 return Resource.error("request is not succesfull",null)
-             }
-
-         }catch (e:Exception){
-             Resource.error(e.printStackTrace().toString(),null)
-         }
-
-    }
 
 
 
