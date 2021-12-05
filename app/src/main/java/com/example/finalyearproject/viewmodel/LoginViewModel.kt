@@ -22,10 +22,9 @@ class LoginViewModel @Inject constructor(
 
 
 
-    private val sgnInResponse = MutableLiveData<ResponseSignIn>()
-    val responseSignInResponse : LiveData<ResponseSignIn>
+    private val sgnInResponse = MutableLiveData<ResponseSignIn?>()
+    val responseSignInResponse : LiveData<ResponseSignIn?>
         get() = sgnInResponse
-
 
     fun signInRequest(requestSignIn: RequestSignIn) = viewModelScope.launch {
         sgnInResponse.value = repo.signInRequest(requestSignIn)
@@ -37,6 +36,10 @@ class LoginViewModel @Inject constructor(
 
         //sgnInResponse.postValue(repo.signInRequest(requestSignIn))
 
+    }
+
+    fun clearResponse(){
+        sgnInResponse.value= null
     }
 
 

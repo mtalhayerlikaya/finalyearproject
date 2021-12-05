@@ -50,7 +50,7 @@ class ChangePasswordContinuePageFragment : Fragment() {
     private fun subcribeObserver(){
         viewModel.continuePageEmailResponse_.observe(viewLifecycleOwner, Observer {
 
-            when(it.status_code){
+            when(it?.status_code){
 
                 "SUCCESS"-> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
@@ -59,10 +59,12 @@ class ChangePasswordContinuePageFragment : Fragment() {
                         Navigation.findNavController(it1)
                             .navigate(R.id.action_changePasswordFragment_to_changePasswordFragment2)
                     }
+                    viewModel.clearResponse()
                 }
 
                 "FAILED" -> {
                     Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    viewModel.clearResponse()
                 }
 
 

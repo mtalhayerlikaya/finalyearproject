@@ -18,8 +18,8 @@ constructor(val repo : ChangePasswordRepository) : ViewModel() {
 
 
 
-    private val resetPageResponse = MutableLiveData<ResponseChangePassword>()
-    val resetPageResponse_ : LiveData<ResponseChangePassword>
+    private val resetPageResponse = MutableLiveData<ResponseChangePassword?>()
+    val resetPageResponse_ : LiveData<ResponseChangePassword?>
         get() = resetPageResponse
 
 
@@ -28,6 +28,10 @@ constructor(val repo : ChangePasswordRepository) : ViewModel() {
 
         resetPageResponse.postValue(repo.resetPassword(token,request))
 
+    }
+
+    fun clearResponse(){
+        resetPageResponse.value= null
     }
 
 

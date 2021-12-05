@@ -19,14 +19,18 @@ class ContinuePageViewModel
 constructor(val repo:ContinuePageRepo): ViewModel(){
 
 
-    private val continuePageEmailResponse = MutableLiveData<EmailResponse>()
-    val continuePageEmailResponse_ : LiveData<EmailResponse>
+    private val continuePageEmailResponse = MutableLiveData<EmailResponse?>()
+    val continuePageEmailResponse_ : LiveData<EmailResponse?>
         get() = continuePageEmailResponse
 
     fun sendEmailRequest(request:EmailRequest) = viewModelScope.launch {
 
         continuePageEmailResponse.postValue(repo.sendEmail(request))
 
+    }
+
+    fun clearResponse(){
+        continuePageEmailResponse.value= null
     }
 
 

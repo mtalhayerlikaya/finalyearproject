@@ -19,8 +19,8 @@ class SignUpViewModel
 constructor(val repo: SignUpPageRepository) : ViewModel() {
 
 
-    private val sgnUpResponse = MutableLiveData<Resource<ResponseSignUp>>()
-    val responseSignUpResponse : LiveData<Resource<ResponseSignUp>>
+    private val sgnUpResponse = MutableLiveData<ResponseSignUp?>()
+    val responseSignUpResponse : LiveData<ResponseSignUp?>
         get() = sgnUpResponse
 
 
@@ -31,8 +31,9 @@ constructor(val repo: SignUpPageRepository) : ViewModel() {
 
     }
 
-
-
+    fun clearResponse(){
+        sgnUpResponse.value= null
+    }
 
 
 

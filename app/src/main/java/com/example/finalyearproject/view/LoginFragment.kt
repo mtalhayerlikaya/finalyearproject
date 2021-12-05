@@ -29,16 +29,11 @@ class LoginFragment : Fragment() {
 
     }
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-
-
         return inflater.inflate(R.layout.fragment_login,container, false)
     }
 
@@ -62,10 +57,10 @@ class LoginFragment : Fragment() {
 
         loginPageButton.setOnClickListener {
             val user = RequestSignIn(loginEmailText.text.trim().toString(),loginPagePassword.text.trim().toString())
-            println(user)
+            //println(user)
             viewModel.signInRequest(user)
 
-            viewModel.deneme()
+            //viewModel.deneme()
 
         }
 
@@ -75,29 +70,25 @@ class LoginFragment : Fragment() {
     private fun observerFunctions(){
 
         viewModel.responseSignInResponse.observe(viewLifecycleOwner, Observer {
-            println("insde obeserver")
-            println(it?.message)
-            when (it.status) {
+
+            when (it?.status) {
                 "SUCCESS" -> {
 
-                    // view?.let { it1 -> Snackbar.make(it1,it.message.toString(),Snackbar.LENGTH_LONG).show() }
                     Toast.makeText(requireContext(),"Welcome!", Toast.LENGTH_SHORT).show()
-                    println("success")
-                    println(it)
+
                     val action = view?.let { it1 ->
                         Navigation.findNavController(it1)
                             .navigate(R.id.action_loginFragment_to_homeFragment2)
                     }
 
+                    viewModel.clearResponse()
+
                 }
 
                 "FAILED" -> {
-                    println(it.data)
-                    println("failed")
-                    // view?.let { it1 -> Snackbar.make(it1,it.message.toString(),Snackbar.LENGTH_LONG).show() }
-                    Toast.makeText(requireContext(),it.message,Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
 
-
+                    viewModel.clearResponse()
                     /*
                     Status.LOADING -> {
                         fragmentBinding?.progressBar?.visibility = View.VISIBLE

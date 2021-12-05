@@ -44,7 +44,7 @@ class SignUpFragment : Fragment() {
         signUpButton.setOnClickListener {
            var user = RequestSignUp(signUpName.text.trim().toString(),signUpEmail.text.trim().toString(),signUpPassword.text.trim().toString())
           viewModel.signUpRequest(user)
-         //println(viewModel.signUpRequest(user))
+
         }
 
         observerFunctions()
@@ -55,27 +55,23 @@ class SignUpFragment : Fragment() {
    private fun observerFunctions(){
 
         viewModel.responseSignUpResponse.observe(viewLifecycleOwner, Observer {
-            when (it.data?.status) {
+            when (it?.status) {
                 "SUCCESS" -> {
 
                     // view?.let { it1 -> Snackbar.make(it1,it.message.toString(),Snackbar.LENGTH_LONG).show() }
-                    Toast.makeText(requireContext(), it.data.status, Toast.LENGTH_SHORT).show()
-                    println("success")
-                    println(it)
+                    Toast.makeText(requireContext(),"User Created", Toast.LENGTH_SHORT).show()
                     val action = view?.let { it1 ->
                         Navigation.findNavController(it1)
                             .navigate(R.id.action_signUpFragment_to_homeFragment2)
                     }
-
+                    viewModel.clearResponse()
                 }
 
                 "FAILED" -> {
-                    println(it)
-                    println("failed")
+
                     // view?.let { it1 -> Snackbar.make(it1,it.message.toString(),Snackbar.LENGTH_LONG).show() }
-                    Toast.makeText(requireContext(),it.data.status,Toast.LENGTH_LONG).show()
-
-
+                    Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
+                    viewModel.clearResponse()
                     /*
                     Status.LOADING -> {
                         fragmentBinding?.progressBar?.visibility = View.VISIBLE

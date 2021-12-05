@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.finalyearproject.Api.RetrofitApi
@@ -50,8 +52,17 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         handleBottomNavBar()
+/*
+        this.onBackPressedDispatcher.addCallback(this,object:
+            OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+
+            }
+
+        })*/
 
 
+/*
         val retrofit = Retrofit.Builder()
             .baseUrl(Url.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -60,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
          val userToSignIn = RequestSignIn("jeffbezos@gmail.com","123456")
          val userToSignUp = RequestSignUp("Jeff Bezos","jeffbezosx@gmail.com","123456")
-/*
+
         scope.launch {
             val response = retrofit.sendSignInRequest(userToSignIn)
             println(response)
