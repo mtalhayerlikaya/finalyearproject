@@ -1,31 +1,33 @@
 package com.example.finalyearproject.repository
 
 import com.example.finalyearproject.Api.RetrofitApi
-import com.example.finalyearproject.model.RequestChangePassword
-import com.example.finalyearproject.model.ResponseChangePassword
+import com.example.finalyearproject.model.EmailResponse
+import com.example.finalyearproject.model.RequestUpdate
+import com.example.finalyearproject.model.ResponseUpdate
+import com.google.gson.GsonBuilder
 import javax.inject.Inject
 
 class ChangePasswordRepository
 @Inject
 constructor(val api : RetrofitApi) {
 
-    suspend fun resetPassword(token:String,request : RequestChangePassword) : ResponseChangePassword {
+    suspend fun resetPassword(token:String,request:RequestUpdate) : ResponseUpdate {
         return try {
-            val response = api.sendResetRequest(request,token)
-            println(response)
-            println()
+            val response = api.sendToUpdate(request,token)
             if(response.isSuccessful){
                 response.body()?.let {
                     return@let it
-                } ?: return ResponseChangePassword("FAILED","response is null","null","null")
+                } ?: return ResponseUpdate("FAILED","response is null","null","response is null")
             }
             else{
-                return ResponseChangePassword("FAILED","response is not successful","null","null")
+                val gson = GsonBuilder().create()
+                val mError = gson.fromJson(response.errorBody()?.string(), ResponseUpdate::class.java)
+                return ResponseUpdate("FAILED","Token is wrong","null",mError.message)
             }
 
         }
         catch (e:Exception){
-            return ResponseChangePassword("FAILED",e.localizedMessage.toString(),"null","null")
+            return ResponseUpdate("FAILED",e.localizedMessage.toString(),"null","null")
 
         }
     }

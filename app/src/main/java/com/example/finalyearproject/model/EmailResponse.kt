@@ -8,11 +8,11 @@ data class EmailResponse(
     @SerializedName("status_code")
     val status_code : String,
     @SerializedName("data")
-    val message : String,
+    val data : String?=null,
     @SerializedName("type")
-    val type : String,
+    val type : String?=null,
     @SerializedName("message")
-    val errorMessage : String
+    val message : String?=null
 
 
 )

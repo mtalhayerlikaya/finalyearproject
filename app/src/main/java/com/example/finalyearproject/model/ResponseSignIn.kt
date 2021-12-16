@@ -10,9 +10,6 @@ data class ResponseSignIn(
     @SerializedName("type")
     val type:String?=null,
     @SerializedName("message")
-    val message :String?=null,
-
-
-
+    val message :String?=null
 
 )

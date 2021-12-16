@@ -7,22 +7,33 @@ import retrofit2.http.*
 interface RetrofitApi {
 
     @Headers("Content-Type: application/json")
-    @POST("api/session/signin")
+    @POST("api/users/login")
     suspend fun sendSignInRequest(@Body request: RequestSignIn): Response<ResponseSignIn>
 
     @Headers("Content-Type: application/json")
-    @POST("api/session")
+    @POST("api/users/signup")
     suspend fun sendSignUpRequest(@Body request: RequestSignUp):Response<ResponseSignUp>
 
     @Headers("Content-Type: application/json")
-    @POST("api/session/changepasswordrequest")
-    suspend fun sendEmailToReset(@Body request: EmailRequest):Response<EmailResponse>
+    @GET("api/users/token")
+    suspend fun sendEmailToReset(
+        @Query("email") email:String
+    ):Response<EmailResponse>
 
     @Headers("Content-Type: application/json")
-    @POST("api/session/changepassword/{token}")
-    suspend fun sendResetRequest(@Body request: RequestChangePassword,
-        @Path(value = "token")  token:String
-    ):Response<ResponseChangePassword>
+    @POST("api/users/update")
+    suspend fun sendToUpdate(
+        @Body request: RequestUpdate,
+        @Query("token") token:String
+    ):Response<ResponseUpdate>
+
+    @Headers("Content-Type: application/json")
+    @POST("api/items")
+    suspend fun getItems(
+        @Body request: RequestUpdate,
+        @Query("token") token:String
+    ):Response<ResponseUpdate>
+
 
 
 

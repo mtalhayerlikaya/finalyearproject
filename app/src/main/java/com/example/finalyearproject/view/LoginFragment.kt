@@ -57,10 +57,8 @@ class LoginFragment : Fragment() {
 
         loginPageButton.setOnClickListener {
             val user = RequestSignIn(loginEmailText.text.trim().toString(),loginPagePassword.text.trim().toString())
-            //println(user)
             viewModel.signInRequest(user)
 
-            //viewModel.deneme()
 
         }
 
@@ -70,10 +68,11 @@ class LoginFragment : Fragment() {
     private fun observerFunctions(){
 
         viewModel.responseSignInResponse.observe(viewLifecycleOwner, Observer {
-
+           // println(it)
             when (it?.status) {
                 "SUCCESS" -> {
-
+                    println("SUCCESS")
+                    println(it)
                     Toast.makeText(requireContext(),"Welcome!", Toast.LENGTH_SHORT).show()
 
                     val action = view?.let { it1 ->
@@ -86,6 +85,8 @@ class LoginFragment : Fragment() {
                 }
 
                 "FAILED" -> {
+                    println("failed")
+                    println(it)
                     Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
 
                     viewModel.clearResponse()
@@ -99,6 +100,9 @@ class LoginFragment : Fragment() {
         }
         )
     }
+
+
+
 
 
 }

@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = MyPagerAdapter(requireFragmentManager())
+        adapter = MyPagerAdapter(childFragmentManager)
         view_pager.adapter = adapter
         tab_layout.setupWithViewPager(view_pager)
 

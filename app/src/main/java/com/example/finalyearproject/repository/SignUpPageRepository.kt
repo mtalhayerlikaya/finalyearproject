@@ -5,6 +5,7 @@ import com.example.finalyearproject.model.RequestSignUp
 import com.example.finalyearproject.model.ResponseSignIn
 import com.example.finalyearproject.model.ResponseSignUp
 import com.example.finalyearproject.util.Resource
+import com.google.gson.GsonBuilder
 import javax.inject.Inject
 
 class SignUpPageRepository
@@ -21,11 +22,13 @@ constructor(private val api :RetrofitApi) {
                     return@let it
                 } ?: return ResponseSignUp("FAILED",null,null,"response is null")
             }else{
-                return ResponseSignUp("FAILED",null,null,"response is not succesfull")
+                val gson = GsonBuilder().create()
+                val mError = gson.fromJson(response.errorBody()?.string(), ResponseSignUp::class.java)
+                return ResponseSignUp("FAILED",null,null,mError.message)
             }
 
         }catch (e:Exception){
-            ResponseSignUp("FAILED",null,null,"response is not succesfull")
+            ResponseSignUp("FAILED",null,null,e.localizedMessage.toString())
 
         }
 

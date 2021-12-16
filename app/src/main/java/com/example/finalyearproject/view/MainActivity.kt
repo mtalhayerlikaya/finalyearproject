@@ -17,6 +17,7 @@ import com.example.finalyearproject.Api.RetrofitApi
 import com.example.finalyearproject.R
 import com.example.finalyearproject.model.RequestSignIn
 import com.example.finalyearproject.model.RequestSignUp
+import com.example.finalyearproject.model.ResponseSignIn
 import com.example.finalyearproject.repository.LoginPageRepository
 import com.example.finalyearproject.util.Url
 
@@ -30,8 +31,15 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 import javax.inject.Inject
+import com.google.gson.GsonBuilder
+
+import com.google.gson.Gson
+
+
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -61,31 +69,39 @@ class MainActivity : AppCompatActivity() {
 
         })*/
 
-
 /*
+        println(mError.message)
         val retrofit = Retrofit.Builder()
             .baseUrl(Url.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RetrofitApi::class.java)
 
-         val userToSignIn = RequestSignIn("jeffbezos@gmail.com","123456")
-         val userToSignUp = RequestSignUp("Jeff Bezos","jeffbezosx@gmail.com","123456")
+         val userToSignIn = RequestSignIn("mtalhayerlikaya@gmail.com","asdasdasd1")
+         //val userToSignUp = RequestSignUp("Talha Yerlikaya","ecyk1234@gmail.com","12345678")
 
         scope.launch {
             val response = retrofit.sendSignInRequest(userToSignIn)
             println(response)
-            println(response.body())
+            val gson = GsonBuilder().create()
+            val mError = gson.fromJson(response.errorBody()?.string(), ResponseSignIn::class.java)
+
+            println(mError.status)
+            println(mError.message)
+            if(response.isSuccessful){
+                println(response.body())
+            }else{
+                println(response.body())
+            }
          }
 
 
         scope.launch {
             val response = retrofit.sendSignUpRequest(userToSignUp)
-          //  println(response)
-          //  println(response.message())
-         //   println(response.body())
-        }
-*/
+            println(response)
+            println(response.body())
+        }*/
+
 
 
     }

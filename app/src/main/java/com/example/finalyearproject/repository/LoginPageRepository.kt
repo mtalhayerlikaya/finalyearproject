@@ -6,30 +6,31 @@ import com.example.finalyearproject.model.ResponseSignUp
 import com.example.finalyearproject.model.RequestSignIn
 import com.example.finalyearproject.model.RequestSignUp
 import com.example.finalyearproject.util.Resource
+import com.google.gson.GsonBuilder
 import javax.inject.Inject
 
 class LoginPageRepository @Inject constructor(
     private val api :RetrofitApi
 ) {
-    fun deneme(){
-        println("bu bir denemedir")
-    }
 
     suspend fun signInRequest(requestSignIn: RequestSignIn) : ResponseSignIn {
 
         return try {
             val response = api.sendSignInRequest(requestSignIn)
-
+            //println(response)
+            //println(response.body())
             if(response.isSuccessful){
                 response.body()?.let {
                     return@let it
                 } ?: return ResponseSignIn("FAILED",null,null,"response is null")
             }else{
-                return ResponseSignIn("FAILED",null,null,"response is not succesfull")
+                val gson = GsonBuilder().create()
+                val mError = gson.fromJson(response.errorBody()?.string(), ResponseSignIn::class.java)
+                return ResponseSignIn("FAILED",null,null,mError.message)
             }
 
         }catch (e:Exception){
-            ResponseSignIn("FAILED",null,null,"response is not succesfull")
+            ResponseSignIn("FAILED",null,null,e.localizedMessage.toString())
 
         }
 

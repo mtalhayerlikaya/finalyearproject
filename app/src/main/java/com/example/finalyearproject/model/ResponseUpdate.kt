@@ -2,18 +2,15 @@ package com.example.finalyearproject.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ResponseChangePassword(
+data class ResponseUpdate(
 
     @SerializedName("status_code")
-    val status_code : String,
+    val status_code:String,
     @SerializedName("data")
-    val message : String,
+    val data:String?=null,
     @SerializedName("type")
-    val type : String,
+    val type:String?=null,
     @SerializedName("message")
-    val errorMessage : String
-
-
-
+    val message:String?=null
 
 )

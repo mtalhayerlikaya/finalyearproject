@@ -6,7 +6,7 @@ data class ResponseSignUp(
     @SerializedName("status_code")
     val status: String,
     @SerializedName("data")
-    val data: ResponseSignUpData?=null,
+    val data: String?=null,
     @SerializedName("type")
     val type:String?=null,
     @SerializedName("message")

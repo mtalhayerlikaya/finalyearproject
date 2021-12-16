@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class RequestSignUp(
 
-    @SerializedName("full_name")
+    @SerializedName("fullName")
     val full_name:String,
     @SerializedName("email")
     val email:String,

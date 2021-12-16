@@ -49,11 +49,11 @@ class ChangePasswordContinuePageFragment : Fragment() {
 
     private fun subcribeObserver(){
         viewModel.continuePageEmailResponse_.observe(viewLifecycleOwner, Observer {
-
+            println(it)
             when(it?.status_code){
 
                 "SUCCESS"-> {
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), it.data, Toast.LENGTH_SHORT).show()
 
                     val action = view?.let { it1 ->
                         Navigation.findNavController(it1)
@@ -63,7 +63,7 @@ class ChangePasswordContinuePageFragment : Fragment() {
                 }
 
                 "FAILED" -> {
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),it.message, Toast.LENGTH_SHORT).show()
                     viewModel.clearResponse()
                 }
 

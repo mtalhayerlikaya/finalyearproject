@@ -14,6 +14,7 @@ import com.example.finalyearproject.model.RequestSignUp
 
 import com.example.finalyearproject.viewmodel.LoginViewModel
 import com.example.finalyearproject.viewmodel.SignUpViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 import kotlinx.coroutines.job
@@ -42,8 +43,9 @@ class SignUpFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(SignUpViewModel::class.java)
 
         signUpButton.setOnClickListener {
-           var user = RequestSignUp(signUpName.text.trim().toString(),signUpEmail.text.trim().toString(),signUpPassword.text.trim().toString())
-          viewModel.signUpRequest(user)
+            var user = RequestSignUp(signUpName.text.trim().toString(),signUpEmail.text.trim().toString(),signUpPassword.text.trim().toString())
+            //validate(user)
+            viewModel.signUpRequest(user)
 
         }
 
@@ -55,14 +57,15 @@ class SignUpFragment : Fragment() {
    private fun observerFunctions(){
 
         viewModel.responseSignUpResponse.observe(viewLifecycleOwner, Observer {
+            println(it)
             when (it?.status) {
                 "SUCCESS" -> {
 
                     // view?.let { it1 -> Snackbar.make(it1,it.message.toString(),Snackbar.LENGTH_LONG).show() }
-                    Toast.makeText(requireContext(),"User Created", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),"User created", Toast.LENGTH_SHORT).show()
                     val action = view?.let { it1 ->
                         Navigation.findNavController(it1)
-                            .navigate(R.id.action_signUpFragment_to_homeFragment2)
+                            .navigate(R.id.action_signUpFragment_to_loginFragment)
                     }
                     viewModel.clearResponse()
                 }
@@ -71,6 +74,7 @@ class SignUpFragment : Fragment() {
 
                     // view?.let { it1 -> Snackbar.make(it1,it.message.toString(),Snackbar.LENGTH_LONG).show() }
                     Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
+
                     viewModel.clearResponse()
                     /*
                     Status.LOADING -> {
@@ -83,10 +87,26 @@ class SignUpFragment : Fragment() {
         )
     }
 
+    private fun validate(user:RequestSignUp):Boolean{
 
+        if(user.full_name.isEmpty() || user.email.isEmpty() || user.password.isEmpty()){
+            Toast.makeText(context,"one of the boxes are empty",Toast.LENGTH_SHORT).show()
+            return false
+        }
 
+        if(user.password.length<8 || user.password.length>24){
+            Toast.makeText(context,"Password must be at range 8-24",Toast.LENGTH_SHORT).show()
+            return false
+        }
 
+        if(!user.email.contains("@gmail.com") || user.email.length<18){
+            Toast.makeText(context,"mail must contain @gmail.com expression or must be 8 character at least",Toast.LENGTH_SHORT).show()
+            return false
+        }
 
+        viewModel.signUpRequest(user)
+        return true
+    }
 
 
 

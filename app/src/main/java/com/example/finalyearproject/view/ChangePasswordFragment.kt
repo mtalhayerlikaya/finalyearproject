@@ -10,9 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.finalyearproject.R
-import com.example.finalyearproject.model.RequestChangePassword
+import com.example.finalyearproject.model.RequestUpdate
 import com.example.finalyearproject.viewmodel.ChangePasswordViewModel
-import com.example.finalyearproject.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.fragment_change_password.*
 
 
@@ -39,8 +38,9 @@ class ChangePasswordFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(ChangePasswordViewModel::class.java)
 
         resetPageButton.setOnClickListener {
-            val request = RequestChangePassword(resetPageToken.text.trim().toString(),resetPageNewPassword.text.trim().toString())
+            val request = RequestUpdate(resetPageToken.text.trim().toString(),resetPageNewPassword.text.trim().toString())
             viewModel.resetPassword(request,resetPageToken.text.trim().toString())
+           // validate(request)
         }
         subcribeObserver()
     }
@@ -51,7 +51,7 @@ class ChangePasswordFragment : Fragment() {
             when(it?.status_code){
 
                 "SUCCESS" -> {
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), it.data, Toast.LENGTH_SHORT).show()
 
                     val action = view?.let { it1 ->
                         Navigation.findNavController(it1)
@@ -70,5 +70,21 @@ class ChangePasswordFragment : Fragment() {
 
 
     }
+/*
+    private fun validate(request: RequestUpdate):Boolean{
+
+        if(resetPageToken.text.trim().toString().isEmpty() || resetPageNewPassword.text.toString().isEmpty()){
+            Toast.makeText(context,"one of the boxes are empty",Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        if(resetPageNewPassword.text.toString().length<6 || resetPageNewPassword.text.toString().length>24){
+            Toast.makeText(context,"Password must be at range 6-24 or token is wrong",Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        viewModel.resetPassword(request,resetPageToken.text.trim().toString())
+        return true
+    }*/
 
 }
