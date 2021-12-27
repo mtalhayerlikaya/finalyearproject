@@ -17,8 +17,7 @@ class LoginPageRepository @Inject constructor(
 
         return try {
             val response = api.sendSignInRequest(requestSignIn)
-            //println(response)
-            //println(response.body())
+
             if(response.isSuccessful){
                 response.body()?.let {
                     return@let it

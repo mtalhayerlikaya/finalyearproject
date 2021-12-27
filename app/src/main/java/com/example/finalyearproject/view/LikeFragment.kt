@@ -6,10 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalyearproject.R
+import com.example.finalyearproject.adapter.AllTabRecyclerViewAdapter
+import com.example.finalyearproject.adapter.LikeRecyclerView
+import com.example.finalyearproject.model.ItemsData
+import com.example.finalyearproject.util.Singleton
+import kotlinx.android.synthetic.main.fragment_all.*
+import kotlinx.android.synthetic.main.fragment_like.*
+import kotlinx.android.synthetic.main.like_recyclerview_item.view.*
 
 
 class LikeFragment : Fragment() {
+
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +44,25 @@ class LikeFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,object:
             OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-
             }
-
         })
+
+        val latestLikedItems = ArrayList<ItemsData>()
+
+        if(Singleton.likedItems != null && Singleton.items != null){
+
+            Singleton.items!!.forEach {
+                for (i in Singleton.likedItems!!){
+                    if(it._id == i){
+                        latestLikedItems.add(it)
+                    }
+                }
+            }
+        }
+        val adapter = LikeRecyclerView(latestLikedItems)
+        like_recyclerview.adapter = adapter
+        like_recyclerview.layoutManager = LinearLayoutManager(activity?.baseContext,LinearLayoutManager.VERTICAL,false)
+
 
     }
 

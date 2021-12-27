@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment2"
         android:name="com.example.finalyearproject.view.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment2_to_cardViewDetailFragment"
+            app:destination="@id/cardViewDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment2"
         android:name="com.example.finalyearproject.view.ProfileFragment"
@@ -72,5 +76,10 @@
             android:id="@+id/action_changePasswordFragment2_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/cardViewDetailFragment"
+        android:name="com.example.finalyearproject.view.CardViewDetailFragment"
+        android:label="fragment_card_view_detail"
+        tools:layout="@layout/fragment_card_view_detail" />
 
 </navigation>

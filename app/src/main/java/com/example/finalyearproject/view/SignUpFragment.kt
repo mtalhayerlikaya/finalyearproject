@@ -57,7 +57,7 @@ class SignUpFragment : Fragment() {
    private fun observerFunctions(){
 
         viewModel.responseSignUpResponse.observe(viewLifecycleOwner, Observer {
-            println(it)
+          //  println(it)
             when (it?.status) {
                 "SUCCESS" -> {
 

@@ -12,6 +12,8 @@ import androidx.navigation.Navigation
 
 import com.example.finalyearproject.R
 import com.example.finalyearproject.model.RequestSignIn
+import com.example.finalyearproject.util.Singleton
+import com.example.finalyearproject.util.Singleton.token
 import com.example.finalyearproject.viewmodel.LoginViewModel
 
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -71,8 +73,9 @@ class LoginFragment : Fragment() {
            // println(it)
             when (it?.status) {
                 "SUCCESS" -> {
-                    println("SUCCESS")
-                    println(it)
+
+                    Singleton.token = it.data!!.token
+                    Singleton.likedItems = it.data.likedItems
                     Toast.makeText(requireContext(),"Welcome!", Toast.LENGTH_SHORT).show()
 
                     val action = view?.let { it1 ->
@@ -85,8 +88,8 @@ class LoginFragment : Fragment() {
                 }
 
                 "FAILED" -> {
-                    println("failed")
-                    println(it)
+                   // println("failed")
+                   // println(it)
                     Toast.makeText(requireContext(),it.message,Toast.LENGTH_SHORT).show()
 
                     viewModel.clearResponse()

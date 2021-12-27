@@ -27,12 +27,13 @@ interface RetrofitApi {
         @Query("token") token:String
     ):Response<ResponseUpdate>
 
+
+    @GET("api/items")
+    suspend fun sendRequestToGetItems():Response<ItemResponse>
+
     @Headers("Content-Type: application/json")
-    @POST("api/items")
-    suspend fun getItems(
-        @Body request: RequestUpdate,
-        @Query("token") token:String
-    ):Response<ResponseUpdate>
+    @POST("api/users/like")
+    suspend fun sendRequesLikeAndUnlike(@Query("token") token:String,@Body request: LikeRequest):Response<LikeResponse>
 
 
 

@@ -19,6 +19,7 @@ import com.example.finalyearproject.model.RequestSignIn
 import com.example.finalyearproject.model.RequestSignUp
 import com.example.finalyearproject.model.ResponseSignIn
 import com.example.finalyearproject.repository.LoginPageRepository
+import com.example.finalyearproject.util.Singleton
 import com.example.finalyearproject.util.Url
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,9 +38,6 @@ import javax.inject.Inject
 import com.google.gson.GsonBuilder
 
 import com.google.gson.Gson
-
-
-
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -60,7 +58,22 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         handleBottomNavBar()
+
+        Singleton.likedItems = ArrayList<String>()
 /*
+        val retrofit = Retrofit.Builder()
+            .baseUrl(Url.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(RetrofitApi::class.java)
+
+        scope.launch {
+            val response = retrofit.sendRequestToGetItems()
+            println(response)
+            println(response.body())
+        }
+
+
         this.onBackPressedDispatcher.addCallback(this,object:
             OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -127,6 +140,7 @@ class MainActivity : AppCompatActivity() {
                     is ChangePasswordFragment->bottom_navigation_menu.visibility = View.GONE
                     is LoginFragment -> bottom_navigation_menu.visibility = View.GONE
                     is SignUpFragment -> bottom_navigation_menu.visibility = View.GONE
+                    is CardViewDetailFragment -> bottom_navigation_menu.visibility = View.GONE
                     else -> bottom_navigation_menu.visibility = View.VISIBLE
 
                 }

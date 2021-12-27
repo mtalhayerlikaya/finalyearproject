@@ -16,9 +16,7 @@ constructor(val api:RetrofitApi) {
    suspend fun sendEmail(request : EmailRequest) : EmailResponse {
         return try {
             val response = api.sendEmailToReset(request.email)
-            println("after this")
-            println(response)
-            println(response.body())
+
             if(response.isSuccessful){
                 response.body()?.let {
                     return@let it

@@ -6,16 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.example.finalyearproject.R
 import com.example.finalyearproject.adapter.FragmentAdapter
 import com.example.finalyearproject.adapter.MyPagerAdapter
+import com.example.finalyearproject.viewmodel.ChangePasswordViewModel
+import com.example.finalyearproject.viewmodel.TabsViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
+
 
     private lateinit var adapter: MyPagerAdapter
 
@@ -41,6 +45,8 @@ class HomeFragment : Fragment() {
         view_pager.adapter = adapter
         tab_layout.setupWithViewPager(view_pager)
 
+
+
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,object:
             OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -51,6 +57,8 @@ class HomeFragment : Fragment() {
 
 
     }
+
+
 
 
 }
