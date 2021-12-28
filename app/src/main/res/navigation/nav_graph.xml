@@ -33,7 +33,26 @@
         android:id="@+id/basketFragment2"
         android:name="com.example.finalyearproject.view.BasketFragment"
         android:label="fragment_basket"
-        tools:layout="@layout/fragment_basket" />
+        tools:layout="@layout/fragment_basket">
+        <argument
+            android:name="quantity"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
+        <argument
+            android:name="price"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"
+            />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.finalyearproject.view.LoginFragment"
@@ -80,6 +99,10 @@
         android:id="@+id/cardViewDetailFragment"
         android:name="com.example.finalyearproject.view.CardViewDetailFragment"
         android:label="fragment_card_view_detail"
-        tools:layout="@layout/fragment_card_view_detail" />
+        tools:layout="@layout/fragment_card_view_detail" >
+        <action
+            android:id="@+id/action_cardViewDetailFragment_to_basketFragment2"
+            app:destination="@id/basketFragment2" />
+    </fragment>
 
 </navigation>

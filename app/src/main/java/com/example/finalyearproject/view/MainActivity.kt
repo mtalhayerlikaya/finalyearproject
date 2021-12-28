@@ -15,6 +15,7 @@ import com.example.finalyearproject.Api.RetrofitApi
 
 
 import com.example.finalyearproject.R
+import com.example.finalyearproject.model.Product
 import com.example.finalyearproject.model.RequestSignIn
 import com.example.finalyearproject.model.RequestSignUp
 import com.example.finalyearproject.model.ResponseSignIn
@@ -60,6 +61,7 @@ class MainActivity : AppCompatActivity() {
         handleBottomNavBar()
 
         Singleton.likedItems = ArrayList<String>()
+        Singleton.basketItems = ArrayList<Product>()
 /*
         val retrofit = Retrofit.Builder()
             .baseUrl(Url.BASE_URL)

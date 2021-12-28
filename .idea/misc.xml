@@ -34,6 +34,7 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/drawable/white_circle.xml" value="0.2203125" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/activity_main.xml" value="0.15806159420289856" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/all_tab_recyclerview_item.xml" value="0.25" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/basket_recyclerview_item.xml" value="0.19746376811594202" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/color.xml" value="0.19746376811594202" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_all.xml" value="0.1" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_basket.xml" value="0.19746376811594202" />
@@ -47,6 +48,7 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/like_recyclerview_item.xml" value="0.5" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/layout/toolbar.xml" value="0.5" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/finalyearproject/app/src/main/res/menu/bottom_menu.xml" value="0.16041666666666668" />
       </map>
     </option>
   </component>

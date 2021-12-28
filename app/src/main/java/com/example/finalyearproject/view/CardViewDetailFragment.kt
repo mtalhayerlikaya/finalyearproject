@@ -9,8 +9,11 @@ import android.widget.Toast
 import androidx.core.graphics.drawable.toDrawable
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
 import com.example.finalyearproject.R
 import com.example.finalyearproject.model.LikeRequest
+import com.example.finalyearproject.model.Product
 import com.example.finalyearproject.util.Singleton
 import com.example.finalyearproject.util.Singleton.likedItems
 import com.example.finalyearproject.util.Singleton.selectedItemId
@@ -95,12 +98,18 @@ class CardViewDetailFragment : Fragment() {
         detailFragmentAddBasket.setOnClickListener {
             if(Integer.parseInt(quantityTextView.text.toString())<=0){
                 Toast.makeText(requireContext(),"You have to pick one product at least",Toast.LENGTH_SHORT).show()
+            }else{
+
+             val product = Product(detailFragmentTitle.text.toString(),detailFragmentPrice.text.toString(),quantityTextView.text.toString())
+             Singleton.basketItems?.add(product)
+             Toast.makeText(requireContext(),"Product added basket",Toast.LENGTH_SHORT).show()
             }
+
         }
 
 
            toolbar.likeItemButton.setOnClickListener {
-               println("clicked")
+
               if(selectedItemId != null && likedItems != null){
                   // item is not liked , like item
                   if(!likedItems!!.contains(selectedItemId)){
