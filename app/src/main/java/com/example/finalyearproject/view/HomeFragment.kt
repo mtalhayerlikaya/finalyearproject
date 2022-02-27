@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.finalyearproject.R
 import com.example.finalyearproject.adapter.FragmentAdapter
@@ -33,18 +34,19 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
-
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = MyPagerAdapter(childFragmentManager)
         view_pager.adapter = adapter
-        tab_layout.setupWithViewPager(view_pager)
+        //view_pager.offscreenPageLimit=1
 
+        tab_layout.setupWithViewPager(view_pager)
 
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,object:

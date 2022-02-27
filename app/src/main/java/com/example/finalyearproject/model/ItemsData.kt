@@ -1,5 +1,7 @@
 package com.example.finalyearproject.model
 
+import java.io.Serializable
+
 data class ItemsData(
     val __v: Int,
     val _id: String,
@@ -7,4 +9,4 @@ data class ItemsData(
     val title: String,
     val type: String,
     val url: String
-)
+):Serializable

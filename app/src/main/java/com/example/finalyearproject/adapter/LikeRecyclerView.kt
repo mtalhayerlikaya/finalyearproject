@@ -25,7 +25,7 @@ class LikeRecyclerView(val latestLikedItems:ArrayList<ItemsData> ): RecyclerView
     override fun onBindViewHolder(holder: LikeViewHolder, position: Int) {
 
                  //holder.itemView.like_fragment_price.text = it.get(position)
-                 holder.itemView.like_fragment_price.text = latestLikedItems[position].price.toString()
+                 holder.itemView.like_fragment_price.text = "$"+latestLikedItems[position].price.toString()
                  holder.itemView.like_fragment_product_name.text = latestLikedItems[position].title
 
     }

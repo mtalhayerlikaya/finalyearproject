@@ -20,7 +20,7 @@ constructor(val repo:RepositoryForTabs): ViewModel() {
     val item : LiveData<ItemResponse>
         get() = items_
 
-    fun getİtem() = viewModelScope.launch{
+    fun getItem() = viewModelScope.launch{
         items_.postValue(repo.getItems())
     }
 

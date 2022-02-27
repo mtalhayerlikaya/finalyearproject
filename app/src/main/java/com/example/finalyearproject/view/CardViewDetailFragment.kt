@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.finalyearproject.R
 import com.example.finalyearproject.model.LikeRequest
 import com.example.finalyearproject.model.Product
@@ -48,8 +49,17 @@ class CardViewDetailFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(CardViewDetailViewModel::class.java)
 
 
-        detailFragmentPrice.text = "$"+Singleton.detailCardViewPrice
-        detailFragmentTitle.text = Singleton.detailCardViewTitle
+        val bundle: CardViewDetailFragmentArgs by navArgs()
+
+        val item = bundle.itemres
+        println(item)
+
+
+
+
+
+        detailFragmentPrice.text = "$"+item.price
+        detailFragmentTitle.text = item.title
         ifItemLiked()
         var request = Singleton.selectedItemId?.let { LikeRequest(it) }
         if (request != null) {

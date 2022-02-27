@@ -18,12 +18,20 @@
         android:id="@+id/profileFragment2"
         android:name="com.example.finalyearproject.view.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment2_to_cardViewDetailFragment"
+            app:destination="@id/cardViewDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment3"
         android:name="com.example.finalyearproject.view.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment3_to_cardViewDetailFragment"
+            app:destination="@id/cardViewDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/likeFragment2"
         android:name="com.example.finalyearproject.view.LikeFragment"
@@ -103,6 +111,54 @@
         <action
             android:id="@+id/action_cardViewDetailFragment_to_basketFragment2"
             app:destination="@id/basketFragment2" />
+        <argument
+            android:name="itemres"
+            app:argType="com.example.finalyearproject.model.ItemsData" />
+    </fragment>
+    <fragment
+        android:id="@+id/allFragment"
+        android:name="com.example.finalyearproject.view.AllFragment"
+        android:label="fragment_all"
+        tools:layout="@layout/fragment_all" >
+        <action
+            android:id="@+id/action_allFragment_to_cardViewDetailFragment"
+            app:destination="@id/cardViewDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fruitsFragment"
+        android:name="com.example.finalyearproject.view.FruitsFragment"
+        android:label="fragment_fruits"
+        tools:layout="@layout/fragment_fruits" >
+        <action
+            android:id="@+id/action_fruitsFragment_to_cardViewDetailFragment"
+            app:destination="@id/cardViewDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vegetablesFragment"
+        android:name="com.example.finalyearproject.view.VegetablesFragment"
+        android:label="fragment_vegetables"
+        tools:layout="@layout/fragment_vegetables" >
+        <action
+            android:id="@+id/action_vegetablesFragment_to_cardViewDetailFragment"
+            app:destination="@id/cardViewDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/greensFragment"
+        android:name="com.example.finalyearproject.view.GreensFragment"
+        android:label="fragment_greens"
+        tools:layout="@layout/fragment_greens" >
+        <action
+            android:id="@+id/action_greensFragment_to_cardViewDetailFragment"
+            app:destination="@id/cardViewDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bakedFragment"
+        android:name="com.example.finalyearproject.view.BakedFragment"
+        android:label="fragment_baked"
+        tools:layout="@layout/fragment_baked" >
+        <action
+            android:id="@+id/action_bakedFragment_to_cardViewDetailFragment"
+            app:destination="@id/cardViewDetailFragment" />
     </fragment>
 
 </navigation>

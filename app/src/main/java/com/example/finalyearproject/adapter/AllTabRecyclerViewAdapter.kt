@@ -11,6 +11,8 @@ import com.example.finalyearproject.R
 import com.example.finalyearproject.model.ItemResponse
 import com.example.finalyearproject.util.Singleton
 import com.example.finalyearproject.view.CardViewDetailFragment
+import com.example.finalyearproject.view.HomeFragmentDirections
+import com.example.finalyearproject.view.ProfileFragmentDirections
 import kotlinx.android.synthetic.main.all_tab_recyclerview_item.view.*
 
 class AllTabRecyclerViewAdapter(val item:ItemResponse,val size:Int): RecyclerView.Adapter<AllTabRecyclerViewAdapter.ItemViewHolder>() {
@@ -27,11 +29,10 @@ class AllTabRecyclerViewAdapter(val item:ItemResponse,val size:Int): RecyclerVie
         holder.itemView.allFragmentItemType.text = item.data!!.get(position).type
         holder.itemView.allFragmentItemImg.setImageResource(R.drawable.ic_launcher_background)
         holder.itemView.allFragmentItemName.text = item.data.get(position).title
-        holder.itemView.allFragmentItemPrice.text = item.data.get(position).price.toString()
+        holder.itemView.allFragmentItemPrice.text = "$"+item.data.get(position).price.toString()
         holder.itemView.productCardView.setOnClickListener {
-            val action =
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_homeFragment2_to_cardViewDetailFragment)
+            val direction = HomeFragmentDirections.actionHomeFragment2ToCardViewDetailFragment( item.data.get(position))
+            Navigation.findNavController(it).navigate(direction)
 
             //Singleton.detailCardViewType = if (item.data?.get(position).type == null) "We have not reached the type now" else item.data?.get(position).type
             Singleton.detailCardViewTitle = if (item.data?.get(position).title == null) "We have not reached the title now" else item.data?.get(position).title

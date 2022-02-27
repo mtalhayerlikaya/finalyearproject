@@ -20,11 +20,6 @@ import kotlinx.android.synthetic.main.like_recyclerview_item.view.*
 
 class LikeFragment : Fragment() {
 
-
-
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

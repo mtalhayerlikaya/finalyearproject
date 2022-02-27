@@ -1,6 +1,7 @@
 package com.example.finalyearproject.view
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,6 +31,8 @@ class AllFragment : Fragment() {
 
     }
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,12 +46,12 @@ class AllFragment : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity()).get(TabsViewModel::class.java)
 
-        viewModel.getİtem()
+        viewModel.getItem()
 
 
 
         swipeRefresh.setOnRefreshListener {
-            viewModel.getİtem()
+            viewModel.getItem()
             swipeRefresh.isRefreshing = false
         }
 

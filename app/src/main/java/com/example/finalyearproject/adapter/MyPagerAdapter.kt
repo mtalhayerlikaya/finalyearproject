@@ -1,15 +1,16 @@
 package com.example.finalyearproject.adapter
 
-
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.finalyearproject.view.*
 
-class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class MyPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm,
+    BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val pageTitle = arrayListOf<String>("All","Fruits","Vegetables","Greens","Baked")
-
+//FragmentPagerAdapter(fm,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
 
     override fun getCount(): Int {
         return pageTitle.size
@@ -29,6 +30,9 @@ class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm,FragmentPage
     override fun getPageTitle(position: Int): CharSequence? {
         return pageTitle[position]
     }
+
+
+
 /*
     fun addPage(){
         pageFragment.add(AllFragment())
