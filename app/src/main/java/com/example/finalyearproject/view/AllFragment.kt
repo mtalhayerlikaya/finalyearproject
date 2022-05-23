@@ -43,9 +43,9 @@ class AllFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        println("stash")
         viewModel = ViewModelProvider(requireActivity()).get(TabsViewModel::class.java)
-
+        println("deneme 12")
         viewModel.getItem()
 
 
