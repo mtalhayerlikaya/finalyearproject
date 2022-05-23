@@ -35,6 +35,10 @@ interface RetrofitApi {
     @POST("api/users/like")
     suspend fun sendRequesLikeAndUnlike(@Query("token") token:String,@Body request: LikeRequest):Response<LikeResponse>
 
+    @Headers("Content-Type: application/json")
+    @POST("api/users/update")
+    suspend fun sendUpdateRequest(@Body updateRequest:UpdateRequest):Response<UpdateResponse>
+
 
 
 

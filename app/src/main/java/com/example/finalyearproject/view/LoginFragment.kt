@@ -73,7 +73,7 @@ class LoginFragment : Fragment() {
            // println(it)
             when (it?.status) {
                 "SUCCESS" -> {
-
+                    Singleton.fullname = it.data!!.fullName
                     Singleton.token = it.data!!.token
                     Singleton.likedItems = it.data.likedItems
                     Toast.makeText(requireContext(),"Welcome!", Toast.LENGTH_SHORT).show()

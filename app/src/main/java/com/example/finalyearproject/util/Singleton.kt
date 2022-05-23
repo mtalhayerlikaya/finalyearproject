@@ -13,5 +13,5 @@ object Singleton {
     var items:List<ItemsData>?=null
     var selectedItemId:String?=null
     var token:String?=null
-
+    var fullname :String?=null
 }

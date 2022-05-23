@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_profileFragment2_to_cardViewDetailFragment"
             app:destination="@id/cardViewDetailFragment" />
+        <action
+            android:id="@+id/action_profileFragment2_to_updateFragment"
+            app:destination="@id/updateFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment3"
@@ -159,6 +162,14 @@
         <action
             android:id="@+id/action_bakedFragment_to_cardViewDetailFragment"
             app:destination="@id/cardViewDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.finalyearproject.view.UpdateFragment"
+        android:label="UpdateFragment" >
+        <action
+            android:id="@+id/action_updateFragment_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
     </fragment>
 
 </navigation>
